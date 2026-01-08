@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>Blog Details</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+
+        <main class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+
+                    <!-- Blog Header -->
+                    <div class="mb-4 text-center">
+                        <h1 class="display-4 fw-bold mb-3">
+                            <%= blog.titel %>
+                        </h1>
+
+                        <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
+                            <img src="<%= blog.createdBy.profileImage %>" alt="author"
+                                class="rounded-circle border border-secondary" width="40" height="40">
+                            <span class="text-muted">By <strong class="text-white">
+                                    <%= blog.createdBy.fullName %>
+                                </strong></span>
+                            <span class="text-muted mx-2">•</span>
+                            <span class="text-muted">
+                                <%= new Date(blog.createdAt).toLocaleDateString() %>
+                            </span>
+                        </div>
+
+                        <% if (blog.coverImageURl) { %>
+                            <div class="blog-cover-container shadow-lg rounded overflow-hidden mb-5">
+                                <img src="<%= blog.coverImageURl %>" alt="<%= blog.titel %>" class="img-fluid w-100"
+                                    style="max-height: 500px; object-fit: cover;">
+                            </div>
+                            <% } %>
+                    </div>
+
+                    <!-- Blog Body -->
+                    <div class="blog-content mb-5">
+                        <div class="p-4 rounded-3"
+                            style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                            <p class="lead" style="white-space: pre-wrap; font-size: 1.15rem; line-height: 1.8;">
+                                <%= blog.body %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="comments-section">
+                        <h3 class="mb-4 border-bottom border-secondary pb-2">Comments (<%= comments.length %>)</h3>
+
+                        <!-- Add Comment Form -->
+                        <% if (locals.user) { %>
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">Leave a comment</h5>
+                                    <form action="/blog/comment/<%= blog._id %>" method="POST">
+                                        <div class="mb-3">
+                                            <textarea name="content" class="form-control" rows="3"
+                                                placeholder="What are your thoughts?" required></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary px-4">Post Comment</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <% } else { %>
+                                <div class="alert alert-secondary text-center">
+                                    Please <a href="/user/signin" class="alert-link">sign in</a> to leave a comment.
+                                </div>
+                                <% } %>
+
+                                    <!-- Comments List -->
+                                    <div class="d-flex flex-column gap-3">
+                                        <% comments.forEach(comment=> { %>
+                                            <div class="card border-0 shadow-sm" style="background-color: #262626;">
+                                                <div class="card-body">
+                                                    <div class="d-flex gap-3">
+                                                        <img src="<%= comment.createdBy.profileImage %>" alt="user"
+                                                            class="rounded-circle" width="45" height="45">
+                                                        <div class="w-100">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center mb-1">
+                                                                <h6 class="mb-0 fw-bold">
+                                                                    <%= comment.createdBy.fullName %>
+                                                                </h6>
+                                                                <small class="text-muted">
+                                                                    <%= new Date(comment.createdAt).toLocaleDateString()
+                                                                        %>
+                                                                </small>
+                                                            </div>
+                                                            <p class="mb-0 text-light"
+                                                                style="font-size: 0.95rem; white-space: pre-wrap;">
+                                                                <%= comment.content %>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+
+                                                <% if (comments.length===0) { %>
+                                                    <p class="text-center text-muted my-3">No comments yet. Be the first
+                                                        to start the conversation!</p>
+                                                    <% } %>
+                                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <%- include('./partials/footer') %>
+            <%- include('./partials/scripts') %>
+</body>
+
+</html>

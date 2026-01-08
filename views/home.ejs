@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head') %>
+    <title>Home</title>
+</head>
+
+<body>
+  <%- include('./partials/nav') %>
+
+    <main class="container mt-5 fade-in">
+      <!-- Hero Section Idea could go here, but keeping it simple for now -->
+      <h1 class="mb-5 text-center display-4 fw-bold">Latest Blogs</h1>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+
+        <% blogs.forEach(blog=> { %>
+          <div class="col">
+            <div class="card h-100 border-0">
+
+              <img src="<%= blog.coverImageURl %>" class="card-img-top" alt="<%= blog.titel %>" loading="lazy">
+
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-truncate">
+                  <%= blog.titel %>
+                </h5>
+                <p class="card-text text-muted flex-grow-1 small">
+                  <!-- Preview could go here -->
+                </p>
+
+                <a href="/blog/<%= blog._id %>" class="btn btn-primary w-100 mt-3">
+                  Read More
+                </a>
+              </div>
+
+            </div>
+          </div>
+          <% }) %>
+
+      </div>
+
+      <% if (blogs.length===0) { %>
+        <div class="text-center mt-5 text-muted">
+          <p>No blogs found. Be the first to write one!</p>
+        </div>
+        <% } %>
+
+    </main>
+
+    <%- include('./partials/footer') %>
+      <%- include('./partials/scripts') %>
+</body>
+
+</html>

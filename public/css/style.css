@@ -1,0 +1,214 @@
+/* Modern Color Palette & Variables - Neutral Dark Theme */
+:root {
+    --primary-color: #bb86fc;
+    /* Light Purple for contrast on dark */
+    --secondary-color: #03dac6;
+    /* Teal accent */
+    --bg-color: #121212;
+    /* True Dark Background */
+    --card-bg: #1e1e1e;
+    /* Slightly lighter gray for cards */
+    --text-color: #e0e0e0;
+    /* High contrast off-white */
+    --muted-color: #b0b0b0;
+    /* Lighter gray for muted text */
+    --border-color: #333333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #1f1f1f !important;
+    /* Distinct header color */
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff !important;
+}
+
+.nav-link {
+    color: var(--muted-color) !important;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff !important;
+}
+
+/* Dropdown Menu Fix */
+.dropdown-menu {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.dropdown-item {
+    color: var(--text-color);
+}
+
+.dropdown-item:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    /* Standard rounded, not too pill-like */
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Improve Blog Text Readability */
+.card-text,
+p {
+    color: var(--text-color);
+    line-height: 1.8;
+    /* Better readability */
+    font-size: 1.1rem;
+    /* Slightly larger text */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #000000;
+    /* Dark text on light button for contrast */
+    border: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #9965f4;
+    /* Slightly darker shade */
+    color: #000000;
+}
+
+/* Forms */
+.form-control {
+    background-color: #2d2d2d;
+    border: 1px solid var(--border-color);
+    color: #ffffff;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.form-control:focus {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: none;
+    /* Removed glow/shadow */
+    outline: 2px solid var(--primary-color);
+}
+
+.form-label {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.form-text {
+    color: var(--muted-color);
+}
+
+/* Footer */
+footer {
+    background-color: #1f1f1f;
+    padding: 3rem 0;
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Blog & Comments */
+.blog-cover-container {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.blog-content p {
+    color: #e2e8f0;
+}
+
+textarea.form-control {
+    background-color: #2d2d2d;
+    border: 1px solid var(--border-color);
+    color: #ffffff;
+    resize: vertical;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+textarea.form-control:focus {
+    background-color: #333;
+    border-color: var(--primary-color);
+}
+
+.comments-section .card {
+    transition: background-color 0.2s;
+}
+
+.comments-section .card:hover {
+    background-color: #2a2a2a !important;
+}
+
+/* Utility */
+main {
+    flex: 1;
+}
+
+.alert {
+    border-radius: 4px;
+}
+
+/* Specific fix for dropdown toggle button if it was outlined light */
+.btn-outline-light {
+    color: var(--text-color);
+    border-color: var(--muted-color);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--muted-color);
+    color: #000;
+}
