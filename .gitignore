@@ -1,0 +1,9 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Ignore images and uploads inside public
+public/images/
+public/uploads/
